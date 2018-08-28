@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mermaid.application.order.dao.basic.RelCustomerOrderDomainMapper" >
+  <resultMap id="BaseResultMap" type="com.mermaid.application.order.model.RelCustomerOrderDomain" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderId" property="orderId" jdbcType="INTEGER" />
+    <result column="roomId" property="roomId" jdbcType="INTEGER" />
+    <result column="customerId" property="customerId" jdbcType="INTEGER" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="creatorId" property="creatorId" jdbcType="INTEGER" />
+    <result column="creatorName" property="creatorName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderId, roomId, customerId, createTime, creatorId, creatorName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rel_customer_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rel_customer_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mermaid.application.order.model.RelCustomerOrderDomain" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into rel_customer_order (orderId, roomId, customerId, 
+      createTime, creatorId, creatorName
+      )
+    values (#{orderId,jdbcType=INTEGER}, #{roomId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{creatorId,jdbcType=INTEGER}, #{creatorName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mermaid.application.order.model.RelCustomerOrderDomain" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into rel_customer_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        orderId,
+      </if>
+      <if test="roomId != null" >
+        roomId,
+      </if>
+      <if test="customerId != null" >
+        customerId,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="creatorId != null" >
+        creatorId,
+      </if>
+      <if test="creatorName != null" >
+        creatorName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        #{creatorName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mermaid.application.order.model.RelCustomerOrderDomain" >
+    update rel_customer_order
+    <set >
+      <if test="orderId != null" >
+        orderId = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="roomId != null" >
+        roomId = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        customerId = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mermaid.application.order.model.RelCustomerOrderDomain" >
+    update rel_customer_order
+    set orderId = #{orderId,jdbcType=INTEGER},
+      roomId = #{roomId,jdbcType=INTEGER},
+      customerId = #{customerId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      creatorId = #{creatorId,jdbcType=INTEGER},
+      creatorName = #{creatorName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

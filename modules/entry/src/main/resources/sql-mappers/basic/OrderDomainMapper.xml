@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mermaid.application.order.dao.basic.OrderDomainMapper" >
+  <resultMap id="BaseResultMap" type="com.mermaid.application.order.model.OrderDomain" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderCode" property="orderCode" jdbcType="VARCHAR" />
+    <result column="orderTime" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="orderSource" property="orderSource" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="VARCHAR" />
+    <result column="payType" property="payType" jdbcType="CHAR" />
+    <result column="payTime" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="roomId" property="roomId" jdbcType="INTEGER" />
+    <result column="hostelId" property="hostelId" jdbcType="INTEGER" />
+    <result column="customerId" property="customerId" jdbcType="INTEGER" />
+    <result column="orderStatus" property="orderStatus" jdbcType="CHAR" />
+    <result column="finishTime" property="finishTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderCode, orderTime, orderSource, amount, payType, payTime, roomId, hostelId, 
+    customerId, orderStatus, finishTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mermaid.application.order.model.OrderDomain" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into order (orderCode, orderTime, orderSource, 
+      amount, payType, payTime, 
+      roomId, hostelId, customerId, 
+      orderStatus, finishTime)
+    values (#{orderCode,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, #{orderSource,jdbcType=INTEGER}, 
+      #{amount,jdbcType=VARCHAR}, #{payType,jdbcType=CHAR}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{roomId,jdbcType=INTEGER}, #{hostelId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{orderStatus,jdbcType=CHAR}, #{finishTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mermaid.application.order.model.OrderDomain" >
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderCode != null" >
+        orderCode,
+      </if>
+      <if test="orderTime != null" >
+        orderTime,
+      </if>
+      <if test="orderSource != null" >
+        orderSource,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="payType != null" >
+        payType,
+      </if>
+      <if test="payTime != null" >
+        payTime,
+      </if>
+      <if test="roomId != null" >
+        roomId,
+      </if>
+      <if test="hostelId != null" >
+        hostelId,
+      </if>
+      <if test="customerId != null" >
+        customerId,
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus,
+      </if>
+      <if test="finishTime != null" >
+        finishTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderCode != null" >
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSource != null" >
+        #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=CHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomId != null" >
+        #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="hostelId != null" >
+        #{hostelId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mermaid.application.order.model.OrderDomain" >
+    update order
+    <set >
+      <if test="orderCode != null" >
+        orderCode = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null" >
+        orderTime = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderSource != null" >
+        orderSource = #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        payType = #{payType,jdbcType=CHAR},
+      </if>
+      <if test="payTime != null" >
+        payTime = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roomId != null" >
+        roomId = #{roomId,jdbcType=INTEGER},
+      </if>
+      <if test="hostelId != null" >
+        hostelId = #{hostelId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        customerId = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        orderStatus = #{orderStatus,jdbcType=CHAR},
+      </if>
+      <if test="finishTime != null" >
+        finishTime = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mermaid.application.order.model.OrderDomain" >
+    update order
+    set orderCode = #{orderCode,jdbcType=VARCHAR},
+      orderTime = #{orderTime,jdbcType=TIMESTAMP},
+      orderSource = #{orderSource,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=VARCHAR},
+      payType = #{payType,jdbcType=CHAR},
+      payTime = #{payTime,jdbcType=TIMESTAMP},
+      roomId = #{roomId,jdbcType=INTEGER},
+      hostelId = #{hostelId,jdbcType=INTEGER},
+      customerId = #{customerId,jdbcType=INTEGER},
+      orderStatus = #{orderStatus,jdbcType=CHAR},
+      finishTime = #{finishTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
