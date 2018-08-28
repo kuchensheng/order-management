@@ -23,9 +23,11 @@ public interface OrderService {
      * @param roomId 客房Id
      * @param hostelId 客栈Id
      * @param customerIds 客户Id数组
+     * @param creatorId 创建人id
+     * @param creatorName 创建人姓名
      * @return 订单编号
      */
-    String createOrder(EnumOrderSource orderSource, String amount, EnumPayType payType, Date payTime,Integer roomId,Integer hostelId,Integer[] customerIds);
+    String createOrder(EnumOrderSource orderSource, String amount, EnumPayType payType, Date payTime, Integer roomId, Integer hostelId, Integer[] customerIds, Integer creatorId, String creatorName);
 
     /**
      * 修改订单

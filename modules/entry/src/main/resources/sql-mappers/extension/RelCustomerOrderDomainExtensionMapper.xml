@@ -2,4 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mermaid.application.order.dao.extension.RelCustomerOrderDomainExtensionMapper" >
   <!-- 扩展自定义的SQl语句写在此文件中 -->
+    <insert id="createRelCustomerOrder">
+      <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+        SELECT LAST_INSERT_ID()
+      </selectKey>
+      insert into rel_customer_order (orderId, roomId, customerId,
+      createTime, creatorId, creatorName
+      )
+      values
+      <foreach collection="relCustomerOrderDomainList" item="item" index="index" separator=",">
+        (
+        #{item.orderId},#{item.roomId},#{item.customerId},#{item.createTime},
+        #{item.creatorId},#{item.creatorName}
+        )
+      </foreach>
+    </insert>
 </mapper>
