@@ -1,0 +1,30 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+
+#Output Folder
+target/
+
+#Log Folder
+logs/
+~/
+
+#Output Files
+*.jar
+*.class
+
+#Project Files Of Eclipse
+.settings/
+.classpath
+.project
+
+#Test
+/Test
+
+#Mac OS Cache File
+.DS_Store
+
