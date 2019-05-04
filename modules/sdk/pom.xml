@@ -13,8 +13,17 @@
     <artifactId>sdk</artifactId>
 
     <name>sdk</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>mermaid-snapshot</id>
+            <url>http://118.178.186.33:9098/nexus/content/repositories/mermaid-snaphost/</url>
+        </snapshotRepository>
+        <repository>
+            <id>mermaid-release</id>
+            <url>http://118.178.186.33:9098/nexus/content/repositories/mermaid-release/</url>
+        </repository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
