@@ -48,6 +48,11 @@
                 <artifactId>sdk</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.mermaid.framework</groupId>
+                <artifactId>mermaid-response</artifactId>
+                <version>${mermaid.framework.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

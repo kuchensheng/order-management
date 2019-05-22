@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>com.mermaid.framework</groupId>
-            <artifactId>mermaid-core</artifactId>
+            <artifactId>mermaid-response</artifactId>
         </dependency>
     </dependencies>
 

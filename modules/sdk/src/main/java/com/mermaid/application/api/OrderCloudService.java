@@ -2,7 +2,7 @@ package com.mermaid.application.api;
 
 import com.mermaid.application.constant.EnumOrderSource;
 import com.mermaid.application.constant.EnumPayType;
-import com.mermaid.framework.mvc.APIResponse;
+import com.mermaid.framework.core.mvc.APIResponse;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.cloud.netflix.feign.FeignClient;

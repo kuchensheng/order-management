@@ -3,7 +3,7 @@ package com.mermaid.application.order.controller;
 import com.mermaid.application.constant.EnumOrderSource;
 import com.mermaid.application.constant.EnumPayType;
 import com.mermaid.application.order.service.OrderService;
-import com.mermaid.framework.mvc.APIResponse;
+import com.mermaid.framework.core.mvc.APIResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

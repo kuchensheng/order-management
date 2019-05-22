@@ -12,7 +12,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,9 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    @Transactional
     public String createOrder(EnumOrderSource orderSource, String amount, EnumPayType payType, Date payTime, Integer roomId, Integer hostelId, Integer[] customerIds, Integer creatorId, String creatorName) {
-        logger.info("创建单个订单，订单来源={}，订单金额={},客栈Id={}，房间Id={}，入住人数={}",orderSource,amount,hostelId,roomId,customerIds.length);
         OrderDomain orderDomain = new OrderDomain();
         orderDomain.setAmount(amount);
         orderDomain.setHostelId(hostelId);
